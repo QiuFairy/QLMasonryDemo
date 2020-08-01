@@ -8,7 +8,7 @@
 
 ### 1、用Masonry创建一个完整的约束应该是这样的
 
-![image](https://github.com/QiuFairy/QLMasonryDemo/blob/master/png1.png)
+![image](https://github.com/QiuFairy/QLMasonryDemo/blob/master/image.png)
 ```
 //view1的左边距离父View左边10个点：
 [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
