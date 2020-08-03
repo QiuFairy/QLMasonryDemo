@@ -17,6 +17,7 @@ typedef NS_ENUM(NSInteger, viewType) {
     viewTypeLabelHeight     ,//label高度自动变化
     viewTypeUpdateLayout    ,//更新约束
     viewTypeSomeViewLayout  ,//多个view
+    viewTypeSomeViewLayout2 ,//多个view
 };
 
 NS_ASSUME_NONNULL_BEGIN

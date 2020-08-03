@@ -47,6 +47,9 @@
         case viewTypeSomeViewLayout:
             [self someViewlayout];
             break;
+        case viewTypeSomeViewLayout2:
+            [self someViewlayout2];
+            break;
             
         default:
             break;
@@ -296,19 +299,85 @@
         make.height.mas_equalTo(1);
     }];
 }
-
+- (void)someViewlayout2{
+    UIButton *btn = [[UIButton alloc]init];
+    btn.backgroundColor = [UIColor redColor];
+    [btn setTitle:@"点一点" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(touchBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.height.mas_equalTo(44);
+        make.width.mas_equalTo(100);
+        make.top.equalTo(self.view.mas_top).offset(20);
+    }];
+    
+    UIView *contentView = [[UIView alloc]init];
+    contentView.mas_key = @"contentView";
+    contentView.backgroundColor = [UIColor cyanColor];
+    contentView.tag = 10;
+    [self.view addSubview:contentView];
+    
+    UIView *bgView = [[UIView alloc]init];
+    bgView.mas_key = @"bgview";
+    bgView.backgroundColor = [UIColor lightGrayColor];
+    bgView.tag = 100;
+    [contentView addSubview:bgView];
+    
+    UIView *leftView = [[UIView alloc]init];
+    leftView.backgroundColor = [UIColor greenColor];
+    leftView.mas_key = @"leftView";
+    [bgView addSubview:leftView];
+    
+    UILabel *rightLabel = [[UILabel alloc]init];
+    rightLabel.numberOfLines = 0;
+    rightLabel.tag = 200;
+    rightLabel.mas_key = @"rightLabel";
+    rightLabel.backgroundColor = [UIColor redColor];
+    [bgView addSubview:rightLabel];
+    
+    rightLabel.text = @"dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒";
+    
+    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(80);
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.width.mas_equalTo(400);
+        make.height.mas_equalTo(200).priorityLow();
+    }];
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(contentView.mas_top).offset(80);
+        make.centerX.equalTo(contentView.mas_centerX);
+        make.width.mas_equalTo(300);
+        make.bottom.mas_lessThanOrEqualTo(contentView.mas_bottom).offset(-20);
+    }];
+    
+    [leftView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bgView.mas_left).offset(10);
+        make.top.equalTo(bgView.mas_top).offset(20);
+        make.width.mas_equalTo(55);
+        make.height.mas_equalTo(40);
+    }];
+    [rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(leftView.mas_right).offset(10);
+        make.top.equalTo(bgView.mas_top).offset(20);
+        make.height.mas_greaterThanOrEqualTo(60);
+        make.bottom.mas_lessThanOrEqualTo(bgView.mas_bottom).offset(-20);
+        make.right.mas_lessThanOrEqualTo(bgView.mas_right).offset(-10);
+    }];
+}
 - (void)touchBtn:(UIButton *)sender{
     sender.selected = !sender.isSelected;
-    UIView *bgview = [self.view viewWithTag:100];
+    UIView *bgview = [self.view viewWithTag:10];
     UILabel *label = (UILabel *)[self.view viewWithTag:200];
     if (sender.selected) {
         label.text = @"很大声科技的挥洒安三";
         [bgview mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(200);
+            make.width.mas_equalTo(360);
         }];
     }else{
         [bgview mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.width.mas_equalTo(300);
+            make.width.mas_equalTo(460);
         }];
         label.text = @"dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒";
     }
