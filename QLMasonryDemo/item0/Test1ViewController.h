@@ -15,7 +15,8 @@ typedef NS_ENUM(NSInteger, viewType) {
     viewTypeDengkuan        ,//等宽
     viewTypeOneAtthreeloacl ,//距离中心view和边距等宽
     viewTypeLabelHeight     ,//label高度自动变化
-    viewTypeUpdateLayout    //更新约束
+    viewTypeUpdateLayout    ,//更新约束
+    viewTypeSomeViewLayout  ,//多个view
 };
 
 NS_ASSUME_NONNULL_BEGIN
