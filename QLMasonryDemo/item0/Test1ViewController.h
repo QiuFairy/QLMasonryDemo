@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, viewType) {
     viewTypeUpdateLayout    ,//更新约束
     viewTypeSomeViewLayout  ,//多个view
     viewTypeSomeViewLayout2 ,//多个view
+    viewTypeSomeViewLayout3 ,//多个view
 };
 
 NS_ASSUME_NONNULL_BEGIN

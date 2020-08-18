@@ -50,6 +50,9 @@
         case viewTypeSomeViewLayout2:
             [self someViewlayout2];
             break;
+        case viewTypeSomeViewLayout3:
+           [self someViewlayout3];
+           break;
             
         default:
             break;
@@ -381,6 +384,66 @@
         }];
         label.text = @"dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒dasjhkdas大师框架的巴萨的哈数据库的很快就撒";
     }
+}
+
+- (void)someViewlayout3{
+    NSMutableArray *viewMuArr = [NSMutableArray arrayWithCapacity:5];
+    
+    UIView *contentView = [[UIView alloc]init];
+    contentView.mas_key = @"contentView";
+    contentView.backgroundColor = [UIColor cyanColor];
+    contentView.tag = 10;
+    [self.view addSubview:contentView];
+    
+    UIView *bgView = [[UIView alloc]init];
+    bgView.mas_key = @"bgView";
+    bgView.backgroundColor = [UIColor whiteColor];
+    [contentView addSubview:bgView];
+    
+    for (int i = 0; i< 4; i++) {
+        UIView *leftView = [[UIView alloc]init];
+        leftView.backgroundColor = [UIColor greenColor];
+        leftView.mas_key = [NSString stringWithFormat:@"view_%d",i];
+        [bgView addSubview:leftView];
+        [viewMuArr addObject:leftView];
+    }
+    
+    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top).offset(80);
+        make.centerX.equalTo(self.view.mas_centerX);
+        make.width.mas_equalTo(400);
+        make.height.mas_equalTo(200);
+    }];
+    
+    UIView *spaceOneView = [[UIView alloc]init];
+    UIView *spaceTwoView = [[UIView alloc]init];
+    [contentView addSubview:spaceTwoView];
+    [contentView addSubview:spaceOneView];
+    
+    [spaceOneView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(spaceTwoView.mas_width);
+        make.top.equalTo(contentView.mas_top).offset(20);
+        make.left.equalTo(contentView.mas_left).offset(10);
+        make.height.mas_equalTo(1);
+    }];
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(spaceOneView.mas_right).offset(0);
+        make.top.equalTo(contentView.mas_top).offset(20);
+        make.height.mas_equalTo(40);
+    }];
+    [spaceTwoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(contentView.mas_top).offset(20);
+        make.left.equalTo(bgView.mas_right).offset(0);
+        make.right.equalTo(contentView.mas_right).offset(-10);
+        make.height.mas_equalTo(1);
+    }];
+    [viewMuArr mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:20 leadSpacing:10 tailSpacing:10];
+    [viewMuArr mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(bgView.mas_top).offset(15);
+        make.height.mas_equalTo(10);
+        make.width.mas_equalTo(60);
+    }];
+    
 }
 
 @end
